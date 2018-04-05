@@ -1,0 +1,14 @@
+# start zookeeper
+E:/ctardella/bin/kafka_2.12-1.1.0/bin/windows/zookeeper-server-start.bat E:/ctardella/bin/kafka_2.12-1.1.0/config/zookeeper.properties
+
+# start broker
+E:/ctardella/bin/kafka_2.12-1.1.0/bin/windows/kafka-server-start.bat E:/ctardella/bin/kafka_2.12-1.1.0/config/server.properties
+
+# create topic
+E:/ctardella/bin/kafka_2.12-1.1.0/bin/windows/kafka-topics.bat --zookeeper localhost:2181 --create --topic hello --partitions 3 --replication-factor 1
+
+# start simple consumer
+E:/ctardella/bin/kafka_2.12-1.1.0/bin/windows/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic hello --from-beginning
+
+# start console producer
+E:/ctardella/bin/kafka_2.12-1.1.0/bin/windows/kafka-console-producer.bat --broker-list localhost:9092 --topic hello
